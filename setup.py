@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='confusion_matrix_cv',
-      version='0.1.1',
+      version='0.1.2',
       description='Confusion Matrix Cross Validation',
       url='https://github.com/UrbanoFonseca/confusion_matrix_cv',
       author='UrbanoFonseca',
