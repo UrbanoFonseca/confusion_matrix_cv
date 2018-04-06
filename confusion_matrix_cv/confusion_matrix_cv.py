@@ -38,7 +38,7 @@ class ConfusionMatrixCV():
 		self.F = 2 / ((1/self.precision)+(1/self.recall))
 
 		# ROC
-		self.ROC = [self.sensitivity, self.fprate]
+		self.ROC = [self.fprate, self.sensitivity]
 
 		# Youden's index
 		self.youden = self.sensitivity - (1-self.specificity)
