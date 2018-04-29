@@ -4,10 +4,10 @@ from sklearn.metrics import make_scorer, confusion_matrix
 from sklearn.model_selection import cross_validate
 
 
-def tp(y_true, y_pred): return confusion_matrix(y_true, y_pred)[0, 0]
+def tp(y_true, y_pred): return confusion_matrix(y_true, y_pred)[1, 1]
 def tn(y_true, y_pred): return confusion_matrix(y_true, y_pred)[0, 0]
-def fp(y_true, y_pred): return confusion_matrix(y_true, y_pred)[1, 0]
-def fn(y_true, y_pred): return confusion_matrix(y_true, y_pred)[0, 1]
+def fp(y_true, y_pred): return confusion_matrix(y_true, y_pred)[0, 1]
+def fn(y_true, y_pred): return confusion_matrix(y_true, y_pred)[1, 0]
 
 
 
@@ -21,10 +21,11 @@ class ConfusionMatrixCV():
 
 
 	def convert_cm(self, confusion_matrix):
-		self.tp = confusion_matrix.loc[0,0]
-		self.fn = confusion_matrix.loc[0,1]
-		self.fp = confusion_matrix.loc[1,0]
-		self.tn = confusion_matrix.loc[1,1]
+		
+		self.tp = confusion_matrix.loc[1,1]
+		self.fn = confusion_matrix.loc[1,0]
+		self.fp = confusion_matrix.loc[0,1]
+		self.tn = confusion_matrix.loc[0,0]
 		return tp, fn, fp, tn
 
 	def calculate_metrics(self):
